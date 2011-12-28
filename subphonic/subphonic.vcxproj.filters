@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\audio">
+      <UniqueIdentifier>{60184a2e-2ca0-4116-bcdb-83f74e6baf1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\screen">
+      <UniqueIdentifier>{1a5a1d54-bf45-4634-8457-19bfa6a7605d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{2887a7bf-9b40-4658-b919-f906180551f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\audio">
+      <UniqueIdentifier>{aa213ece-a02d-42dc-b315-6d8ff392d8ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{fb1246ab-dd60-4f99-b59d-04917a253a4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\screen">
+      <UniqueIdentifier>{10689662-c886-4303-80be-5df1890d0bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{06660fd3-510b-43f0-8662-9cad1e0b3bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{e6700caa-ad06-4cc5-b78a-499912e9e04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sig">
+      <UniqueIdentifier>{5fb66aca-9f25-48ee-a8f8-3967cd37de31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sig">
+      <UniqueIdentifier>{2d4f8ab7-6c8f-4867-9f4a-25893f44cec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{78db1bb5-4abd-4f67-b2de-e66f448724e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>{e70eea8f-c1a9-4085-871c-9fc763063c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\m_main">
+      <UniqueIdentifier>{54bc22b6-1105-4ff2-8cc4-d6bf20f9575f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\m_main">
+      <UniqueIdentifier>{4ee0790b-a818-4fae-baf2-205a498d7d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\g_comp">
+      <UniqueIdentifier>{b75626b4-277b-41c0-b647-4c2f66f3916f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\g_comp">
+      <UniqueIdentifier>{92fb4f6d-d090-425f-bdfe-0db702c8327d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\main">
+      <UniqueIdentifier>{69f0193d-c960-4546-af8e-1762fde32318}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main">
+      <UniqueIdentifier>{73ae8462-9504-415a-9df9-94e3c4c709d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="audio\device.cpp">
+      <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\fpskeep.cpp">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\input.cpp">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\screen.cpp">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="util\debug.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\util.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\rand.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\lineclip.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="math\complex.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\fft.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\mathutil.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\matrix.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\quat.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\vec2.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\vec4.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\vec4i.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\simple_mat.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\wav.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_util.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_sample.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_other.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_osc.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_note.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_mix.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_math.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_filter.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_env.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_effect.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal_delay.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\signal.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="sig\sample.cpp">
+      <Filter>Source Files\sig</Filter>
+    </ClCompile>
+    <ClCompile Include="util\cmdi.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\file_io.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\o_gcon.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\bitmapfont.cpp">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\surf_hold.cpp">
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\bg_make.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_sel_plane.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_select.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\gui_sheet.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\m_bench.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\m_con.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\m_main.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\m_main_help.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\m_state.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="m_main\progstate.cpp">
+      <Filter>Source Files\m_main</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\alt0cmd.c">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_abs.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_adsr.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_ahdsr.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_bitcrush.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_bridge.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_buffer.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_ceil.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_changepulse.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_clip.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_common.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_crossfade.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_dc.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_delay.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_divide.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_doppler.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_drain.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_drawenv.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_edelay.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_env.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_execcmd.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_exp.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_fft_filt.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_filter.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_floor.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_gain.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_gatetopulse.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_help.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_integrate.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_joystick.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_keyboard.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_keyextr.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_lessthan.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_lessthanequal.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_linear.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_log.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_logistic.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_max.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_metro.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_midictrl.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_midikey.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_midipgm.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_min.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_minus.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_mix.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_mod.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_mult.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_note.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_notegain.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_octscale.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_onoff.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_osc.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_play.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_plus.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_print.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_punchpad.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_samplehold.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_samplerate.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_scope.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_select_in.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_sign.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_sin.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_slew.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_sort.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_spec.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_statetick.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_stepmatrix.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_threshold.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_tracker.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_trunc.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_wav.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\g_vector.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\midibase.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="g_comp\tracker_base.cpp">
+      <Filter>Source Files\g_comp</Filter>
+    </ClCompile>
+    <ClCompile Include="main\main.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\main_th.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="audio\device.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="util\debug.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\util.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\fpskeep.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\input.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\screen.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="util\types.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\lineclip.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\rand.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ringbuffer.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="math\complex.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\fft.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\mathutil.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\quat.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\simple_mat.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vec2.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vec3.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vec4.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vec4i.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ringbuffer_T.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vec3_T.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\fft_T.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\math.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\all.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\defines.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\sample.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_delay.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_effect.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_env.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_filter.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_math.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_mix.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_note.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_osc.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_other.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_sample.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\signal_util.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\wav.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\window.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="sig\window_T.h">
+      <Filter>Header Files\sig</Filter>
+    </ClInclude>
+    <ClInclude Include="util\res_hold.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\o_gcon.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\file_io.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\cmdi.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\res_hold_T.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\bitmapfont.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\surf_hold.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\all.h">
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_sheet.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_select_T.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_select.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_sel_plane.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_plot_T.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui_plot.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\gui.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\bg_make.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\all.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\m_bench.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\m_con.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\m_main.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\m_main_help.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\m_state.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="m_main\progstate.h">
+      <Filter>Header Files\m_main</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\tracker_base.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\midibase.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_vector.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_trunc.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_tracker.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_threshold.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_stepmatrix.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_statetick.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_spec.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_sort.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_slew.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_sin.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_sign.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_select_in.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_scope.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_samplerate.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_samplehold.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_punchpad.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_print.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_plus.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_play.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_osc.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_onoff.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_octscale.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_notegain.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_note.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_mult.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_mod.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_mix.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_minus.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_min.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_midipgm.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_midikey.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_midictrl.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_metro.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_max.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_logistic.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_log.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_linear.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_lessthanequal.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_lessthan.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_keyextr.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_keyboard.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_joystick.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_integrate.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_help.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_gatetopulse.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_gain.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_floor.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_filter.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_fft_filt.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_exp.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_execcmd.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_env.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_edelay.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_drawenv.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_drain.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_doppler.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_divide.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_delay.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_dc.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_common.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_clip.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_changepulse.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_ceil.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_buffer.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_bridge.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_bitcrush.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_all.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_ahdsr.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_adsr.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_abs.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\alt0cmd.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_crossfade.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="g_comp\g_wav.h">
+      <Filter>Header Files\g_comp</Filter>
+    </ClInclude>
+    <ClInclude Include="audio\midi.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="main\main_th.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\main.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\cmds.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

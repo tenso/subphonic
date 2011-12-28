@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FDBF1D0C-C682-48A0-A40A-8E2E48BAC687}</ProjectGuid>
+    <RootNamespace>subphonic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\3rdparty_dev\dirent;..\3rdparty_dev\glew\include;..\3rdparty_dev\SDL\include;..\3rdparty_dev\SDL_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\3rdparty_dev\SDL_image\lib;..\3rdparty_dev\glew\lib;..\3rdparty_dev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\3rdparty_dev\dirent\;..\3rdparty_dev\SDL_image\include;..\3rdparty_dev\SDL\include;..\3rdparty_dev\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\3rdparty_dev\SDL_image\lib;..\3rdparty_dev\SDL\lib;..\3rdparty_dev\glew\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="audio\device.cpp" />
+    <ClCompile Include="gui\bg_make.cpp" />
+    <ClCompile Include="gui\gui.cpp" />
+    <ClCompile Include="gui\gui_select.cpp" />
+    <ClCompile Include="gui\gui_sel_plane.cpp" />
+    <ClCompile Include="gui\gui_sheet.cpp" />
+    <ClCompile Include="g_comp\alt0cmd.c" />
+    <ClCompile Include="g_comp\g_abs.cpp" />
+    <ClCompile Include="g_comp\g_adsr.cpp" />
+    <ClCompile Include="g_comp\g_ahdsr.cpp" />
+    <ClCompile Include="g_comp\g_bitcrush.cpp" />
+    <ClCompile Include="g_comp\g_bridge.cpp" />
+    <ClCompile Include="g_comp\g_buffer.cpp" />
+    <ClCompile Include="g_comp\g_ceil.cpp" />
+    <ClCompile Include="g_comp\g_changepulse.cpp" />
+    <ClCompile Include="g_comp\g_clip.cpp" />
+    <ClCompile Include="g_comp\g_common.cpp" />
+    <ClCompile Include="g_comp\g_crossfade.cpp" />
+    <ClCompile Include="g_comp\g_dc.cpp" />
+    <ClCompile Include="g_comp\g_delay.cpp" />
+    <ClCompile Include="g_comp\g_divide.cpp" />
+    <ClCompile Include="g_comp\g_doppler.cpp" />
+    <ClCompile Include="g_comp\g_drain.cpp" />
+    <ClCompile Include="g_comp\g_drawenv.cpp" />
+    <ClCompile Include="g_comp\g_edelay.cpp" />
+    <ClCompile Include="g_comp\g_env.cpp" />
+    <ClCompile Include="g_comp\g_execcmd.cpp" />
+    <ClCompile Include="g_comp\g_exp.cpp" />
+    <ClCompile Include="g_comp\g_fft_filt.cpp" />
+    <ClCompile Include="g_comp\g_filter.cpp" />
+    <ClCompile Include="g_comp\g_floor.cpp" />
+    <ClCompile Include="g_comp\g_gain.cpp" />
+    <ClCompile Include="g_comp\g_gatetopulse.cpp" />
+    <ClCompile Include="g_comp\g_help.cpp" />
+    <ClCompile Include="g_comp\g_integrate.cpp" />
+    <ClCompile Include="g_comp\g_joystick.cpp" />
+    <ClCompile Include="g_comp\g_keyboard.cpp" />
+    <ClCompile Include="g_comp\g_keyextr.cpp" />
+    <ClCompile Include="g_comp\g_lessthan.cpp" />
+    <ClCompile Include="g_comp\g_lessthanequal.cpp" />
+    <ClCompile Include="g_comp\g_linear.cpp" />
+    <ClCompile Include="g_comp\g_log.cpp" />
+    <ClCompile Include="g_comp\g_logistic.cpp" />
+    <ClCompile Include="g_comp\g_max.cpp" />
+    <ClCompile Include="g_comp\g_metro.cpp" />
+    <ClCompile Include="g_comp\g_midictrl.cpp" />
+    <ClCompile Include="g_comp\g_midikey.cpp" />
+    <ClCompile Include="g_comp\g_midipgm.cpp" />
+    <ClCompile Include="g_comp\g_min.cpp" />
+    <ClCompile Include="g_comp\g_minus.cpp" />
+    <ClCompile Include="g_comp\g_mix.cpp" />
+    <ClCompile Include="g_comp\g_mod.cpp" />
+    <ClCompile Include="g_comp\g_mult.cpp" />
+    <ClCompile Include="g_comp\g_note.cpp" />
+    <ClCompile Include="g_comp\g_notegain.cpp" />
+    <ClCompile Include="g_comp\g_octscale.cpp" />
+    <ClCompile Include="g_comp\g_onoff.cpp" />
+    <ClCompile Include="g_comp\g_osc.cpp" />
+    <ClCompile Include="g_comp\g_play.cpp" />
+    <ClCompile Include="g_comp\g_plus.cpp" />
+    <ClCompile Include="g_comp\g_print.cpp" />
+    <ClCompile Include="g_comp\g_punchpad.cpp" />
+    <ClCompile Include="g_comp\g_samplehold.cpp" />
+    <ClCompile Include="g_comp\g_samplerate.cpp" />
+    <ClCompile Include="g_comp\g_scope.cpp" />
+    <ClCompile Include="g_comp\g_select_in.cpp" />
+    <ClCompile Include="g_comp\g_sign.cpp" />
+    <ClCompile Include="g_comp\g_sin.cpp" />
+    <ClCompile Include="g_comp\g_slew.cpp" />
+    <ClCompile Include="g_comp\g_sort.cpp" />
+    <ClCompile Include="g_comp\g_spec.cpp" />
+    <ClCompile Include="g_comp\g_statetick.cpp" />
+    <ClCompile Include="g_comp\g_stepmatrix.cpp" />
+    <ClCompile Include="g_comp\g_threshold.cpp" />
+    <ClCompile Include="g_comp\g_tracker.cpp" />
+    <ClCompile Include="g_comp\g_trunc.cpp" />
+    <ClCompile Include="g_comp\g_vector.cpp" />
+    <ClCompile Include="g_comp\g_wav.cpp" />
+    <ClCompile Include="g_comp\midibase.cpp" />
+    <ClCompile Include="g_comp\tracker_base.cpp" />
+    <ClCompile Include="main\main.cpp" />
+    <ClCompile Include="main\main_th.cpp" />
+    <ClCompile Include="math\complex.cpp" />
+    <ClCompile Include="math\fft.cpp" />
+    <ClCompile Include="math\mathutil.cpp" />
+    <ClCompile Include="math\matrix.cpp" />
+    <ClCompile Include="math\quat.cpp" />
+    <ClCompile Include="math\simple_mat.cpp" />
+    <ClCompile Include="math\vec2.cpp" />
+    <ClCompile Include="math\vec4.cpp" />
+    <ClCompile Include="math\vec4i.cpp" />
+    <ClCompile Include="m_main\m_bench.cpp" />
+    <ClCompile Include="m_main\m_con.cpp" />
+    <ClCompile Include="m_main\m_main.cpp" />
+    <ClCompile Include="m_main\m_main_help.cpp" />
+    <ClCompile Include="m_main\m_state.cpp" />
+    <ClCompile Include="m_main\progstate.cpp" />
+    <ClCompile Include="screen\bitmapfont.cpp" />
+    <ClCompile Include="screen\fpskeep.cpp" />
+    <ClCompile Include="screen\input.cpp" />
+    <ClCompile Include="screen\screen.cpp" />
+    <ClCompile Include="screen\surf_hold.cpp" />
+    <ClCompile Include="sig\sample.cpp" />
+    <ClCompile Include="sig\signal.cpp" />
+    <ClCompile Include="sig\signal_delay.cpp" />
+    <ClCompile Include="sig\signal_effect.cpp" />
+    <ClCompile Include="sig\signal_env.cpp" />
+    <ClCompile Include="sig\signal_filter.cpp" />
+    <ClCompile Include="sig\signal_math.cpp" />
+    <ClCompile Include="sig\signal_mix.cpp" />
+    <ClCompile Include="sig\signal_note.cpp" />
+    <ClCompile Include="sig\signal_osc.cpp" />
+    <ClCompile Include="sig\signal_other.cpp" />
+    <ClCompile Include="sig\signal_sample.cpp" />
+    <ClCompile Include="sig\signal_util.cpp" />
+    <ClCompile Include="sig\wav.cpp" />
+    <ClInclude Include="audio\midi.h" />
+    <ClInclude Include="gui\all.h" />
+    <ClInclude Include="gui\bg_make.h" />
+    <ClInclude Include="gui\gui.h" />
+    <ClInclude Include="gui\gui_plot.h" />
+    <ClInclude Include="gui\gui_plot_T.h" />
+    <ClInclude Include="gui\gui_select.h" />
+    <ClInclude Include="gui\gui_select_T.h" />
+    <ClInclude Include="gui\gui_sel_plane.h" />
+    <ClInclude Include="gui\gui_sheet.h" />
+    <ClInclude Include="g_comp\alt0cmd.h" />
+    <ClInclude Include="g_comp\g_abs.h" />
+    <ClInclude Include="g_comp\g_adsr.h" />
+    <ClInclude Include="g_comp\g_ahdsr.h" />
+    <ClInclude Include="g_comp\g_all.h" />
+    <ClInclude Include="g_comp\g_bitcrush.h" />
+    <ClInclude Include="g_comp\g_bridge.h" />
+    <ClInclude Include="g_comp\g_buffer.h" />
+    <ClInclude Include="g_comp\g_ceil.h" />
+    <ClInclude Include="g_comp\g_changepulse.h" />
+    <ClInclude Include="g_comp\g_clip.h" />
+    <ClInclude Include="g_comp\g_common.h" />
+    <ClInclude Include="g_comp\g_crossfade.h" />
+    <ClInclude Include="g_comp\g_dc.h" />
+    <ClInclude Include="g_comp\g_delay.h" />
+    <ClInclude Include="g_comp\g_divide.h" />
+    <ClInclude Include="g_comp\g_doppler.h" />
+    <ClInclude Include="g_comp\g_drain.h" />
+    <ClInclude Include="g_comp\g_drawenv.h" />
+    <ClInclude Include="g_comp\g_edelay.h" />
+    <ClInclude Include="g_comp\g_env.h" />
+    <ClInclude Include="g_comp\g_execcmd.h" />
+    <ClInclude Include="g_comp\g_exp.h" />
+    <ClInclude Include="g_comp\g_fft_filt.h" />
+    <ClInclude Include="g_comp\g_filter.h" />
+    <ClInclude Include="g_comp\g_floor.h" />
+    <ClInclude Include="g_comp\g_gain.h" />
+    <ClInclude Include="g_comp\g_gatetopulse.h" />
+    <ClInclude Include="g_comp\g_help.h" />
+    <ClInclude Include="g_comp\g_integrate.h" />
+    <ClInclude Include="g_comp\g_joystick.h" />
+    <ClInclude Include="g_comp\g_keyboard.h" />
+    <ClInclude Include="g_comp\g_keyextr.h" />
+    <ClInclude Include="g_comp\g_lessthan.h" />
+    <ClInclude Include="g_comp\g_lessthanequal.h" />
+    <ClInclude Include="g_comp\g_linear.h" />
+    <ClInclude Include="g_comp\g_log.h" />
+    <ClInclude Include="g_comp\g_logistic.h" />
+    <ClInclude Include="g_comp\g_max.h" />
+    <ClInclude Include="g_comp\g_metro.h" />
+    <ClInclude Include="g_comp\g_midictrl.h" />
+    <ClInclude Include="g_comp\g_midikey.h" />
+    <ClInclude Include="g_comp\g_midipgm.h" />
+    <ClInclude Include="g_comp\g_min.h" />
+    <ClInclude Include="g_comp\g_minus.h" />
+    <ClInclude Include="g_comp\g_mix.h" />
+    <ClInclude Include="g_comp\g_mod.h" />
+    <ClInclude Include="g_comp\g_mult.h" />
+    <ClInclude Include="g_comp\g_note.h" />
+    <ClInclude Include="g_comp\g_notegain.h" />
+    <ClInclude Include="g_comp\g_octscale.h" />
+    <ClInclude Include="g_comp\g_onoff.h" />
+    <ClInclude Include="g_comp\g_osc.h" />
+    <ClInclude Include="g_comp\g_play.h" />
+    <ClInclude Include="g_comp\g_plus.h" />
+    <ClInclude Include="g_comp\g_print.h" />
+    <ClInclude Include="g_comp\g_punchpad.h" />
+    <ClInclude Include="g_comp\g_samplehold.h" />
+    <ClInclude Include="g_comp\g_samplerate.h" />
+    <ClInclude Include="g_comp\g_scope.h" />
+    <ClInclude Include="g_comp\g_select_in.h" />
+    <ClInclude Include="g_comp\g_sign.h" />
+    <ClInclude Include="g_comp\g_sin.h" />
+    <ClInclude Include="g_comp\g_slew.h" />
+    <ClInclude Include="g_comp\g_sort.h" />
+    <ClInclude Include="g_comp\g_spec.h" />
+    <ClInclude Include="g_comp\g_statetick.h" />
+    <ClInclude Include="g_comp\g_stepmatrix.h" />
+    <ClInclude Include="g_comp\g_threshold.h" />
+    <ClInclude Include="g_comp\g_tracker.h" />
+    <ClInclude Include="g_comp\g_trunc.h" />
+    <ClInclude Include="g_comp\g_vector.h" />
+    <ClInclude Include="g_comp\g_wav.h" />
+    <ClInclude Include="g_comp\midibase.h" />
+    <ClInclude Include="g_comp\tracker_base.h" />
+    <ClInclude Include="main\cmds.h" />
+    <ClInclude Include="main\main.h" />
+    <ClInclude Include="main\main_th.h" />
+    <ClInclude Include="m_main\m_bench.h" />
+    <ClInclude Include="m_main\m_con.h" />
+    <ClInclude Include="m_main\m_main.h" />
+    <ClInclude Include="m_main\m_main_help.h" />
+    <ClInclude Include="m_main\m_state.h" />
+    <ClInclude Include="m_main\progstate.h" />
+    <ClInclude Include="screen\all.h" />
+    <ClInclude Include="screen\bitmapfont.h" />
+    <ClInclude Include="screen\surf_hold.h" />
+    <ClInclude Include="sig\window_T.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClCompile Include="util\cmdi.cpp" />
+    <ClCompile Include="util\debug.cpp" />
+    <ClCompile Include="util\file_io.cpp" />
+    <ClCompile Include="util\lineclip.cpp" />
+    <ClCompile Include="util\o_gcon.cpp" />
+    <ClCompile Include="util\rand.cpp" />
+    <ClCompile Include="util\util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="audio\device.h" />
+    <ClInclude Include="math\complex.h" />
+    <ClInclude Include="math\fft.h" />
+    <ClInclude Include="math\fft_T.h" />
+    <ClInclude Include="math\math.h" />
+    <ClInclude Include="math\mathutil.h" />
+    <ClInclude Include="math\matrix.h" />
+    <ClInclude Include="math\quat.h" />
+    <ClInclude Include="math\simple_mat.h" />
+    <ClInclude Include="math\vec2.h" />
+    <ClInclude Include="math\vec3.h" />
+    <ClInclude Include="math\vec3_T.h" />
+    <ClInclude Include="math\vec4.h" />
+    <ClInclude Include="math\vec4i.h" />
+    <ClInclude Include="screen\fpskeep.h" />
+    <ClInclude Include="screen\input.h" />
+    <ClInclude Include="screen\screen.h" />
+    <ClInclude Include="sig\all.h" />
+    <ClInclude Include="sig\defines.h" />
+    <ClInclude Include="sig\sample.h" />
+    <ClInclude Include="sig\signal.h" />
+    <ClInclude Include="sig\signal_delay.h" />
+    <ClInclude Include="sig\signal_effect.h" />
+    <ClInclude Include="sig\signal_env.h" />
+    <ClInclude Include="sig\signal_filter.h" />
+    <ClInclude Include="sig\signal_math.h" />
+    <ClInclude Include="sig\signal_mix.h" />
+    <ClInclude Include="sig\signal_note.h" />
+    <ClInclude Include="sig\signal_osc.h" />
+    <ClInclude Include="sig\signal_other.h" />
+    <ClInclude Include="sig\signal_sample.h" />
+    <ClInclude Include="sig\signal_util.h" />
+    <ClInclude Include="sig\wav.h" />
+    <ClInclude Include="sig\window.h" />
+    <ClInclude Include="util\cmdi.h" />
+    <ClInclude Include="util\debug.h" />
+    <ClInclude Include="util\file_io.h" />
+    <ClInclude Include="util\lineclip.h" />
+    <ClInclude Include="util\o_gcon.h" />
+    <ClInclude Include="util\rand.h" />
+    <ClInclude Include="util\res_hold.h" />
+    <ClInclude Include="util\res_hold_T.h" />
+    <ClInclude Include="util\ringbuffer.h" />
+    <ClInclude Include="util\ringbuffer_T.h" />
+    <ClInclude Include="util\types.h" />
+    <ClInclude Include="util\util.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
