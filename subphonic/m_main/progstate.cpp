@@ -10,7 +10,7 @@ ProgramState::ProgramState()
     setGrabInput(true);
     setDrawLinesFG(true);
    
-    setDataPrefix(DATA_PREFIX);
+    setDataPrefix("./data/");
    
     setDevFmt(AUDIO_S16);
    

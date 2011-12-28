@@ -10,10 +10,7 @@
 using namespace std;
 using namespace spl;
 
-#define DATA_PREFIX ""
-#define FILEFORMAT_VERSION 16
-#define CFG_LOCATION "C:\\mw\\"
-#define VERSION "1a1"
+#include "../main/config.h"
 
 //FIXME: move all data to private!
 

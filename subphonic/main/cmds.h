@@ -6,6 +6,7 @@
 
 # include <string>
 # include <sstream>
+#include "../main/config.h"
 
 //#include "g_comp/g_all.h"
 
@@ -17,12 +18,17 @@
 
 //WORKFIX: somethings(module path etc) should be set for all maincomps
 
+#ifdef BUILD_WINDOWS
 char* get_current_dir_name()
 {
-    char* str = new char[1];
-    str[0] = '\0';
-    return str;
+    char* buffer;
+    if( (buffer = _getcwd( NULL, 0 )) == NULL )
+    {
+        cout << "_getcwd error" << endl;
+    }
+    return buffer;
 }
+#endif
 
 template <class T>
 bool parseNum(const std::string& s, uint num, vector<T>& ret)

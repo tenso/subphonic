@@ -872,5 +872,8 @@
     <ClInclude Include="main\cmds.h">
       <Filter>Header Files\main</Filter>
     </ClInclude>
+    <ClInclude Include="main\config.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

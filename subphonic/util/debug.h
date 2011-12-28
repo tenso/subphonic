@@ -70,15 +70,15 @@ namespace spl{
 
 # endif
 
-#define D_MSG( str ) std::cout << str << std::endl;
+#define D_MSG( str ) //std::cout << str << std::endl;
 #define ERROR( str ) std::cerr << str << std::endl;
 #define CHK_GL_ERROR(str) 
 #define DASSERT(x) D_ASSERT(x)
 #define DERROR(x) D_ERROR(x)
 #define DASSERTP(val, msg) D_ASSERT_M(val, msg)
-#define VERBOSE2(msg) msg
-#define VERBOSE1(msg) msg
-#define VERBOSE0(msg) msg
+#define VERBOSE2(msg) //msg
+#define VERBOSE1(msg) //msg
+#define VERBOSE0(msg) //msg
 
 /*TIMINGS*/
 	/*

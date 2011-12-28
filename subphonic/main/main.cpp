@@ -1,5 +1,4 @@
-#define BUILD_WINDOWS
-//#define USE_MIDI
+#include "../main/config.h"
 
 #ifdef BUILD_WINDOWS
 #pragma comment( lib, "SDL.lib" )
@@ -9,8 +8,6 @@
 #pragma comment( lib, "glew32.lib" )
 
 #include <direct.h>
-
-#define CONSOLE_APP
 
 #ifndef CONSOLE_APP
 #include <windows.h>
@@ -148,22 +145,13 @@ int main(int argc, char** argv)
     progstate.setFps(INITIAL_FPS);
    
     progstate.setGraphColor(255,0,0);
-    //progstate.setDataPrefix(DATA_PREFIX);
-
-#ifdef BUILD_WINDOWS
-    char* buffer;
-    // Get the current working directory: 
-    if( (buffer = _getcwd( NULL, 0 )) == NULL )
-    {
-        //perror( "_getcwd error" );
-    }
-    else
-    {
-        //free(buffer);
-    }
-    progstate.setDataPrefix(string(buffer) + "/data/");
+    
+#ifdef DATA_PREFIX
+    progstate.setDataPrefix(DATA_PREFIX);
 #else
-    progstate.setDataPrefix(get_current_dir_name() + "/data/");
+    char* buffer = get_current_dir_name();
+    progstate.setDataPrefix(string(buffer) + "/data/");
+    free(buffer);
 #endif
 
     autoexec_path = progstate.getDataPrefix() + "autoexec.cfg";
