@@ -207,7 +207,7 @@ bool Input::keySet(SDLKey k, bool reset)
 
 char Input::firstAsciiKey()
 {
-    for (int i=0;i<SDLK_LAST;i++)
+    for (int i=SDLK_SPACE;i<SDLK_z;i++)
     {
         if (keys[i])
         {

@@ -387,13 +387,13 @@ bool Console::isFull()
 
 void Console::start()
 {
-    SDL_EnableUNICODE(1);
+    //SDL_EnableUNICODE(1);
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 }
 
 void Console::stop()
 {
-    SDL_EnableUNICODE(0);
+    //SDL_EnableUNICODE(0);
     SDL_EnableKeyRepeat(0, 0);
 }
 
@@ -631,24 +631,29 @@ int Console::handleEvents(Input& in)
         }
     }
     else {
-        ch = in.firstAsciiKey();
-        if(ch==0)return 1;
-
-        if(cursor>=GCON_LINELEN-2)
+        string str;
+        in.inputStr(str);
+                
+        for (int i=0;i<str.length();i++)
         {
-            cursor--;
-            if(cursor+2>ch_perline)cur_start--;
-        }
+            char ch = str.at(i);
+
+            if(cursor>=GCON_LINELEN-2)
+            {
+                cursor--;
+                if(cursor+2>ch_perline)cur_start--;
+            }
         
-        slen = strlen(&linebuff[cursor]);
-        if(linebuff[cursor] != '\0' && cursor+slen < GCON_LINELEN-2)
-        {
-            memmove(&linebuff[cursor+1],&linebuff[cursor], slen);
-        }
+            slen = strlen(&linebuff[cursor]);
+            if(linebuff[cursor] != '\0' && cursor+slen < GCON_LINELEN-2)
+            {
+                memmove(&linebuff[cursor+1],&linebuff[cursor], slen);
+            }
 
-        linebuff[cursor] = ch;
-        cursor++;
-        if(cursor+3>ch_perline)cur_start++;
+            linebuff[cursor] = ch;
+            cursor++;
+            if(cursor+3>ch_perline)cur_start++;
+        }
     }
     return 1;
 }

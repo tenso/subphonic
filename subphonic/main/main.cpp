@@ -1479,7 +1479,9 @@ int w_th_exec(void* data)
         {
             lockMasterRes(); //!
             int done = con->handleEvents(master_res.in);
-	     
+            string str;
+            master_res.in.inputStr(str);
+
             if(con->pQueueIn()>0)
             {
                 //not all commands need to freeze execution, but it matters little so do it:

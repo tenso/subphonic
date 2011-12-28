@@ -555,6 +555,10 @@ int MasterResourses::initInput()
         //FIXME: mouse opened as joy
         in.openJoy(i);
     }
+
+    in.setUnicode(1);
+    in.setUseInputStr(1);
+
     return 0;
 }
 
