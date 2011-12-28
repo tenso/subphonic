@@ -1489,7 +1489,7 @@ int w_th_exec(void* data)
         //if master HANDLE EVENTS
         if(me->is_master)
         {
-            int done = con->handleEvents(); //this must be fixed
+            int done = con->handleEvents(); //this must be fixed, prio1
 	     
             if(con->pQueueIn()>0)
             {
