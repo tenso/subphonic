@@ -1,4 +1,5 @@
 #include "m_main.h" 
+#include "../main/config.h"
 
 using namespace std;
 //using namespace spl;
@@ -275,13 +276,13 @@ void Main::buildMenu()
     /*********/
     /*HW MENU*/
     /*********/
-   
+#ifdef USE_ALT0
     submenu = new Menu(pix["menuback_b"], pix["menuselback_b"], f ,
     pix["menuback_b"]->w/8, pix["menuback_sub_b"], pix["menuselback_sub_b"]);
    
     submenu->addItem("alt0",new MenuAction(G_ALTZEROCTRL, this));
     menu->addSubMenu("hw", submenu);
-
+#endif
    
     /***************/
     /*SEQUENCE MENU*/

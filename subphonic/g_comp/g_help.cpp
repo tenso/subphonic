@@ -1,4 +1,5 @@
 #include "g_help.h"
+#include "../main/config.h"
 
 void convertCoords(const vector<SelectPlane::Coord>& in, vector<SigCoord>& out)
 {
@@ -22,9 +23,11 @@ SoundComp* SCFactory(SCType id, int x, int y, BitmapFont* f, GroundMixer& ground
    
     switch(id)
     {
+#ifdef USE_ALT0
         case G_ALTZEROCTRL:
-            //sc = new GAltZeroCtrl(f, ground);
+            sc = new GAltZeroCtrl(f, ground);
             break;
+#endif
         case G_EDELAY:
             sc = new GEDelay(f, ground);
             break;

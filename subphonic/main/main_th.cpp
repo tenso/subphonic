@@ -576,24 +576,26 @@ int MasterResourses::freeInput()
 }
 
 
-int MasterResourses::initVideo(uint screen_w, uint screen_h, bool useGL)
+int MasterResourses::initVideo(uint screen_w, uint screen_h, bool useGL, bool fullscreen)
 {
     DASSERT(screen==NULL);
    
     //SCREEN
     const SDL_VideoInfo* info = SDL_GetVideoInfo();
     VERBOSE1(cout << "using " << (int)info->vfmt->BitsPerPixel << " bpp" <<endl;);
-   
+    int extFlags = 0;
+    if (fullscreen)extFlags |= SDL_FULLSCREEN;
+
     if (useGL)
     {
         cout << "render: opengl" << endl;
-        screen = new SDL_GL_Screen(screen_w, screen_h, (int)info->vfmt->BitsPerPixel/*, SDL_DOUBLEBUF*/);
+        screen = new SDL_GL_Screen(screen_w, screen_h, (int)info->vfmt->BitsPerPixel, extFlags /*SDL_DOUBLEBUF*/);
     }
     else
     {
         cout << "render: software" << endl;
         screen = new SDL_SW_Screen(screen_w, screen_h, (int)info->vfmt->BitsPerPixel, 
-                                   SDL_SWSURFACE /*| SDL_HWACCEL*/| SDL_DOUBLEBUF | SDL_ANYFORMAT);
+                                   SDL_HWSURFACE | SDL_HWACCEL| SDL_DOUBLEBUF | SDL_ANYFORMAT | extFlags);
     }
    
     if(screen != NULL && !screen->ok())

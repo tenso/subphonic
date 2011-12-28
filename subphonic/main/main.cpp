@@ -40,13 +40,14 @@ static const int INITIAL_FPS=30;
 //FIXME: move to progstate!
 uint num_threads=2; //cant change after init
 const uint max_threads=9;
-
 int screen_w=1280;
-int screen_h=1024;
+int screen_h=720;
+bool useGl = false;
+bool useFullscreen = false;
+
 vector<string> initial_load(1); //one per workspace
 string autoexec_path;
 string run_after_load;
-bool useGl = false;
 
 //ALL SHARE:(FIXME)
 
@@ -203,44 +204,14 @@ int main(int argc, char** argv)
    
 
 
-    err = master_res.initVideo(screen_w, screen_h, useGl);
+    err = master_res.initVideo(screen_w, screen_h, useGl, useFullscreen);
     if(err==-1)
     {
         cout << "init video failed" << endl;
         cout << SDL_GetError() << endl;
         exit(1);
     } 
-  
-    /*while(1)
-      {
-      glClear(GL_COLOR_BUFFER_BIT);
-
-      glBegin(GL_QUADS);
-    
-      glColor3f(1,1,0);
-      glVertex2i(0,0);
-      //glTexCoord2f(0,0);
-
-      glColor3f(1,0,0);
-      glVertex2i(1024, 0);
-
-      //glTexCoord2f(1,0);
-    
-      glColor3f(1,0,0);
-      glVertex2i(1024, 768);
-
-      //glTexCoord2f(1,1);
-    
-      glColor3f(1,0,0);
-      glVertex2i(0, 768);
-
-      //glTexCoord2f(1,0);
-
-      glEnd();
-
-      SDL_GL_SwapBuffers();
-      }*/
-    
+        
     string bmdata = progstate.getDataPrefix() + "bitmaps/";
     cout << bmdata << endl;
 
@@ -543,6 +514,7 @@ int initCon()
     master_res.con->addCmd("", NULL);
     master_res.con->addCmd("reset_allseqno",reset_allseqno);
     master_res.con->addCmd("set_forceload", set_force_load);
+    master_res.con->addCmd("set_mousesens",set_mousesens);
     //master_res.con->addCmd("autosave", autosave);
     //done add cmd
    
@@ -550,7 +522,7 @@ int initCon()
    
     //master_res.con->show("*channels: %d",progstate.getNChan());
     //master_res.con->show(" ");
-    master_res.con->show("help for program help");
+    master_res.con->show("help_keys or help_cmds for program help, tab autocompletes");
     master_res.con->show(" ");
     master_res.con->show(" "); 
    

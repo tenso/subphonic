@@ -606,6 +606,17 @@ void set_bg_color(void* arg)
     con->show("bg color: %d %d %d", progstate.bg_color.r,progstate.bg_color.g,progstate.bg_color.b);
 }
 
+void set_mousesens(void* arg)
+{
+    if(arg==NULL)
+    {
+        con->show("mousesens: %f ", progstate.scroll_speed);
+        return;
+    }
+
+    progstate.scroll_speed = atof((char*)arg);
+    con->show("mousesens: %f ", progstate.scroll_speed);
+}
 
 void set_grid_color(void* arg)
 {

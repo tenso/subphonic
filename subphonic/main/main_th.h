@@ -26,7 +26,7 @@ class MasterResourses
     int initInput();
     int freeInput();
    
-    int initVideo(uint screen_w, uint screen_h, bool useGL = false);
+    int initVideo(uint screen_w, uint screen_h, bool useGL=false, bool fullscreen=false);
     int freeVideo();
     //int initCon(); //FIXME: these belong here
     //int freeCon();
