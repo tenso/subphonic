@@ -404,7 +404,7 @@ bool Console::isActive()
 }
 
 
-int Console::handleEvents()
+int Console::handleEvents(Input& in)
 {
     if(state==CON_UP)return 0;
    
@@ -415,297 +415,240 @@ int Console::handleEvents()
     int shortest_dup;
     int s_dlen;
    
-    while(SDL_PollEvent(&event))
+    if (in.keySet(SDLK_LCTRL, false))
     {
-        if(event.type==SDL_KEYDOWN)
-        {
-            if(event.key.keysym.mod&KMOD_LCTRL)
+        if (in.keySet(SDLK_a)){
+            cursor=0;
+            cur_start=0;
+        }
+        else if (in.keySet(SDLK_e)) {
+            while(linebuff[cursor]!='\0')
             {
-                switch(event.key.keysym.sym)
-                {
-                    case SDLK_a:
-		       
-                        cursor=0;
-                        cur_start=0;
-                        break;
-		       
-                    case SDLK_e:
-		       
-                        while(linebuff[cursor]!='\0')
-                        {
-                            cursor++;
-                            if(cursor+3>ch_perline)cur_start++;;
-                        }
-		       
-		       
-                        break;
-		       
-                    case SDLK_d:
-		       
-                        if(linebuff[cursor] != '\0')
-                        {
-                            memmove(&linebuff[cursor],&linebuff[cursor+1],strlen(&linebuff[cursor]));
-                        }
-                        else linebuff[cursor]='\0';
-                        break;
-		       
-                    default:
-                        break;
-                }
-		  
-                continue;
-            }
-            bool found=false;
-            hist_it it;
-            switch(event.key.keysym.sym)
-            {
-		  
-                case SDLK_ESCAPE:
-                    if(full)break;
-                    togglescroll();
-                    break;
-		  
-                case SDLK_PAGEUP:
-                    histoff+=HISTORY_STEP;
-                    if(histoff>history.data.size())histoff=history.data.size();
-                    break;
-		  
-                case SDLK_PAGEDOWN:
-		  
-                    if(histoff>=HISTORY_STEP)
-                        histoff-=HISTORY_STEP;
-                    else histoff=0;
-		  
-                    break;
-		  
-                case SDLK_BACKSPACE:
-                    if(cursor>0)cursor--;
-                    if(cur_start>0)cur_start--;
-		  
-                    if(linebuff[cursor] != '\0')
-                    {
-                        memmove(&linebuff[cursor],&linebuff[cursor+1],strlen(&linebuff[cursor]));
-                    }
-                    else linebuff[cursor]='\0';
-                    break;
-		  
-                case SDLK_LEFT:
-                    if(cursor>0)cursor--;
-                    if(cur_start>0)cur_start--;
-                    break;
-		  
-                case SDLK_RIGHT:
-                    if(linebuff[cursor]=='\0')break;
-                    if(cursor<GCON_LINELEN-1)cursor++;
-                    if(cursor+3>ch_perline)cur_start++;
-                    break;
-		  
-                case SDLK_RETURN:
-                    // run command?
-                    if(linebuff[0]=='\0')break;
-		  
-                    execCmd(string(linebuff));
-		  
-                    //clear linebuff
-                    memset(linebuff,'\0',GCON_LINELEN);
-                    cursor=0;
-                    cur_start=0;
-                    chist=-1;
-                    break;
-		  
-                case SDLK_UP:
-                    if(chist+1 == history.data.size())break;
-		  
-		  
-                    //find a command, start search on chist+1
-                    //when top of history is reached the input line is cleared
-                    //so that it is easy to enter new command
-		  
-                    chist++;
-                    it = history.fwdBegin(chist);
-		  
-                    while(true)
-                    { 
-                        if(it->type==LB_INPUT)
-                        {
-                            str = it->str;
-                            found=true;
-                            break;
-                        }
-                        it++;
-                        if(it == history.end())break;
-                        chist++;
-                    }
-		  
-                    if(!found)
-                    {
-                        memset(linebuff,'\0', GCON_LINELEN);
-                        cursor=0;
-                        break;
-                    }
-		  
-                    memset(linebuff,'\0', GCON_LINELEN);
-		  
-                    slen = str.length();
-                    memcpy(linebuff,str.c_str(), slen);
-                    cursor=slen;
-                    break;
-		  
-                case SDLK_DOWN:
-		  
-                    //start search one lower than chist
-                    if(chist==-1)break;
-		  
-                    chist--;
-		  
-                    if(chist>=0)
-                    {
-		       
-                        //find a command
-                        it = history.fwdBegin(chist);
-		       
-                        while(true)
-                        { 
-                            if(it->type==LB_INPUT)
-                            {
-                                found=true;
-                                str = it->str;
-                                break;
-                            }
-                            if(it==history.begin())break;
-                            it--;
-                            chist--;
-                        }
-                    }
-		  
-		  
-                    if(chist==-1)
-                    {
-                        memset(linebuff,'\0', GCON_LINELEN);
-                        cursor=0;
-                        break;
-                    }
-		  
-                    if(!found)
-                    {
-                        break;
-                    }
-		  
-                    memset(linebuff,'\0', GCON_LINELEN);
-		  
-                    slen = str.length();
-                    memcpy(linebuff,str.c_str(),slen);
-                    cursor=slen;
-                    break;
-		  
-                case SDLK_TAB:
-		  
-                    int i;
-		  
-                    if(cursor==0)
-                    {
-                        history.add(" ",LB_OUTPUT);
-                        history.add("all commands:",LB_OUTPUT);
-                        history.add(" ",LB_OUTPUT);
-		       
-                        for(i=0;i<cmd.num();i++)
-                        {
-                            //if(cmd.cmds[i].fn==NULL)continue;
-			    
-                            //print empty as separator
-                            if(cmd.getFun(i)==NULL)history.add(" ", LB_OUTPUT);
-                            else history.add(cmd.getName(i),LB_OUTPUT);
-                        }
-                        break;
-                    }		  
-		  
-                    matched = -1;
-                    shortest_dup=-1;
-                    s_dlen=-1;
-		  
-                    for(i=0;i<cmd.num();i++)
-                    {
-                        if(cmd.getFun(i)==NULL)continue;
-		       
-                        if(!strncmp(linebuff, cmd.getName(i).c_str(), cursor))
-                        {
-                            if (matched >= 0) //this means duplicate commands
-                            {
-                                if(s_dlen==-1)
-                                {
-                                    int tmpi=0;
-                                    shortest_dup = i;
-                                    while(cmd.getName(shortest_dup)[tmpi]==cmd.getName(matched)[tmpi])tmpi++;
-                                    s_dlen=tmpi;
-                                }
-                                else
-                                {
-                                    int tmpi=0;
-                                    while(cmd.getName(shortest_dup)[tmpi]==cmd.getName(i)[tmpi])tmpi++;
-                                    if(tmpi<s_dlen)s_dlen=tmpi;
-                                }
-                            }
-			    
-                            matched = i;
-                        }
-                    }
-                    if (matched >= 0 && s_dlen==-1)
-                    {
-                        memcpy(linebuff, cmd.getName(matched).c_str(), cmd.getName(matched).length());
-                        cursor=cmd.getName(matched).length()+1;
-		       
-                        linebuff[cursor-1] = ' ';
-                    } 
-                    else if(shortest_dup>=0)
-                    {
-                        memcpy(linebuff, cmd.getName(shortest_dup).c_str(), s_dlen );
-                        cursor=s_dlen;
-		       
-                        history.add(" ",LB_OUTPUT);
-                        history.add("matched commands:",LB_OUTPUT);
-		       
-                        for(i=0;i<cmd.num();i++)
-                        {
-                            if(cmd.getFun(i)==NULL)continue;
-                            if(!strncmp(linebuff, cmd.getName(i).c_str(), cursor))
-                                history.add(cmd.getName(i), LB_OUTPUT);
-                        }
-                    }
-		  
-                    break;
-		  
-                default:
-		  
-                    /*		  if((event.key.keysym.unicode & 0xFF80) == 0)
-                              {
-                              ch = event.key.keysym.unicode & 0x7F;
-                              }
-                              else break;*/
-		  
-                    ch = (char)event.key.keysym.unicode;
-                    if(ch==0)break;
-		  
-                    if(cursor>=GCON_LINELEN-2)
-                    {
-                        cursor--;
-                        if(cursor+2>ch_perline)cur_start--;
-                    }
-		  
-		  
-                    slen = strlen(&linebuff[cursor]);
-                    if(linebuff[cursor] != '\0' && cursor+slen < GCON_LINELEN-2)
-                    {
-                        memmove(&linebuff[cursor+1],&linebuff[cursor], slen);
-                    }
-		  
-                    linebuff[cursor] = ch;
-		  
-                    cursor++;
-                    if(cursor+3>ch_perline)cur_start++;
-		  
-                    break;
+                cursor++;
+                if(cursor+3>ch_perline)cur_start++;;
             }
         }
+        else if (in.keySet(SDLK_d)) {
+            if(linebuff[cursor] != '\0')
+            {
+                memmove(&linebuff[cursor],&linebuff[cursor+1],strlen(&linebuff[cursor]));
+            }
+            else linebuff[cursor]='\0';
+        }
+    }
+
+    bool found=false;
+    hist_it it;
+    
+    if (in.keySet(SDLK_ESCAPE, true)) {
+        if(!full)togglescroll();
+    }
+    else if (in.keySet(SDLK_PAGEUP, true)) {
+        histoff+=HISTORY_STEP;
+        if(histoff>history.data.size())histoff=history.data.size();
+    }
+	else if (in.keySet(SDLK_PAGEDOWN, true)) {
+        if(histoff>=HISTORY_STEP)
+            histoff-=HISTORY_STEP;
+        else histoff=0;
+    }  
+    else if (in.keySet(SDLK_BACKSPACE, true)) {
+        if(cursor>0)cursor--;
+        if(cur_start>0)cur_start--;
+
+        if(linebuff[cursor] != '\0')
+        {
+            memmove(&linebuff[cursor],&linebuff[cursor+1],strlen(&linebuff[cursor]));
+        }
+        else linebuff[cursor]='\0';
+    }
+    else if (in.keySet(SDLK_LEFT, true)) {
+        if(cursor>0)cursor--;
+        if(cur_start>0)cur_start--;
+    }
+    else if (in.keySet(SDLK_RIGHT, true)) {
+        if(linebuff[cursor]!='\0') {
+            if(cursor<GCON_LINELEN-1)cursor++;
+            if(cursor+3>ch_perline)cur_start++;
+        }
+    }
+    else if (in.keySet(SDLK_RETURN, true)) {
+        // run command?
+        if(linebuff[0]!='\0') {
+            execCmd(string(linebuff));
+
+            //clear linebuff
+            memset(linebuff,'\0',GCON_LINELEN);
+            cursor=0;
+            cur_start=0;
+            chist=-1;
+        }
+    }
+    else if (in.keySet(SDLK_UP, true)) {
+        if(chist+1 != history.data.size()) {
+            //find a command, start search on chist+1
+            //when top of history is reached the input line is cleared
+            //so that it is easy to enter new command
+
+            chist++;
+            it = history.fwdBegin(chist);
+
+            while(true)
+            { 
+                if(it->type==LB_INPUT)
+                {
+                    str = it->str;
+                    found=true;
+                    break;
+                }
+                it++;
+                if(it == history.end())break;
+                chist++;
+            }
+
+            if(!found)
+            {
+                memset(linebuff,'\0', GCON_LINELEN);
+                cursor=0;
+            }
+            else {
+                memset(linebuff,'\0', GCON_LINELEN);
+                slen = str.length();
+                memcpy(linebuff,str.c_str(), slen);
+                cursor=slen;
+            }
+        }
+    }
+    else if (in.keySet(SDLK_DOWN, true)) {
+        //start search one lower than chist
+        if(chist==-1)return 1;
+
+        chist--;
+
+        if(chist>=0) {
+            //find a command
+            it = history.fwdBegin(chist);
+
+            while(true)
+            { 
+                if(it->type==LB_INPUT)
+                {
+                    found=true;
+                    str = it->str;
+                    break;
+                }
+                if(it==history.begin())return 1;
+                it--;
+                chist--;
+            }
+        }
+
+
+        if(chist==-1)
+        {
+            memset(linebuff,'\0', GCON_LINELEN);
+            cursor=0;
+        }
+        else if(found) {
+            memset(linebuff,'\0', GCON_LINELEN);
+
+            slen = str.length();
+            memcpy(linebuff,str.c_str(),slen);
+            cursor=slen;
+        }
+    }
+    else if (in.keySet(SDLK_TAB, true)) {
+        int i;
+
+        if(cursor==0)
+        {
+            history.add(" ",LB_OUTPUT);
+            history.add("all commands:",LB_OUTPUT);
+            history.add(" ",LB_OUTPUT);
+
+            for(i=0;i<cmd.num();i++)
+            {
+                //if(cmd.cmds[i].fn==NULL)continue;
+
+                //print empty as separator
+                if(cmd.getFun(i)==NULL)history.add(" ", LB_OUTPUT);
+                else history.add(cmd.getName(i),LB_OUTPUT);
+            }
+            return 1;
+        }		  
+		  
+        matched = -1;
+        shortest_dup=-1;
+        s_dlen=-1;
+
+        for(i=0;i<cmd.num();i++)
+        {
+            if(cmd.getFun(i)==NULL)continue;
+
+            if(!strncmp(linebuff, cmd.getName(i).c_str(), cursor))
+            {
+                if (matched >= 0) //this means duplicate commands
+                {
+                    if(s_dlen==-1)
+                    {
+                        int tmpi=0;
+                        shortest_dup = i;
+                        while(cmd.getName(shortest_dup)[tmpi]==cmd.getName(matched)[tmpi])tmpi++;
+                        s_dlen=tmpi;
+                    }
+                    else
+                    {
+                        int tmpi=0;
+                        while(cmd.getName(shortest_dup)[tmpi]==cmd.getName(i)[tmpi])tmpi++;
+                        if(tmpi<s_dlen)s_dlen=tmpi;
+                    }
+                }
+
+                matched = i;
+            }
+        }
+        if (matched >= 0 && s_dlen==-1)
+        {
+            memcpy(linebuff, cmd.getName(matched).c_str(), cmd.getName(matched).length());
+            cursor=cmd.getName(matched).length()+1;
+
+            linebuff[cursor-1] = ' ';
+        } 
+        else if(shortest_dup>=0)
+        {
+            memcpy(linebuff, cmd.getName(shortest_dup).c_str(), s_dlen );
+            cursor=s_dlen;
+
+            history.add(" ",LB_OUTPUT);
+            history.add("matched commands:",LB_OUTPUT);
+
+            for(i=0;i<cmd.num();i++)
+            {
+                if(cmd.getFun(i)==NULL)continue;
+                if(!strncmp(linebuff, cmd.getName(i).c_str(), cursor))
+                    history.add(cmd.getName(i), LB_OUTPUT);
+            }
+        }
+    }
+    else {
+        ch = in.firstAsciiKey();
+        if(ch==0)return 1;
+
+        if(cursor>=GCON_LINELEN-2)
+        {
+            cursor--;
+            if(cursor+2>ch_perline)cur_start--;
+        }
+        
+        slen = strlen(&linebuff[cursor]);
+        if(linebuff[cursor] != '\0' && cursor+slen < GCON_LINELEN-2)
+        {
+            memmove(&linebuff[cursor+1],&linebuff[cursor], slen);
+        }
+
+        linebuff[cursor] = ch;
+        cursor++;
+        if(cursor+3>ch_perline)cur_start++;
     }
     return 1;
 }

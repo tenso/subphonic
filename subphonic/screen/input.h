@@ -86,6 +86,9 @@ class Input
    
     //this is set untill release unless reset=true
     bool keySet(SDLKey k, bool reset=false);
+
+    //return \0 on no more keys
+    char firstAsciiKey();
    
     //these are set untill resetKeyPressRel() or reset()
     //example code:

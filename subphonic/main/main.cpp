@@ -1489,7 +1489,8 @@ int w_th_exec(void* data)
         //if master HANDLE EVENTS
         if(me->is_master)
         {
-            int done = con->handleEvents(); //this must be fixed, prio1
+            lockMasterRes(); //!
+            int done = con->handleEvents(master_res.in);
 	     
             if(con->pQueueIn()>0)
             {
@@ -1508,8 +1509,6 @@ int w_th_exec(void* data)
                 check_sm_count=1; //do it directly
             }
 
-            lockMasterRes(); //!
-            
             master_res.c_fps = me->fps.getFps();
             if(!done && master_res.maincomp != NULL)
             {

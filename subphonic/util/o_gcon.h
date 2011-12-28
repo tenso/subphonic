@@ -15,8 +15,7 @@
 #include <stdarg.h>
 #include <SDL.h>
 
-#include "../screen/screen.h"
-#include "../screen/bitmapfont.h"
+#include "../screen/all.h"
 #include "cmdi.h"
 #include "../util/debug.h"
 
@@ -151,7 +150,7 @@ class Console
     void show(const string& str);
    
     //only actualy runs if con is down: return 1 if con down or going down; 0 otherwise
-    int handleEvents();
+    int handleEvents(Input& in);
     void draw();
    
     char* getLineBuff();
@@ -214,7 +213,6 @@ class Console
    
     SDL_Color bg_color;
    
-    SDL_Event event;
     BitmapFont* fnt0;
     BitmapFont* fnt1;
    

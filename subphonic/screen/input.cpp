@@ -205,6 +205,19 @@ bool Input::keySet(SDLKey k, bool reset)
     return val;
 }
 
+char Input::firstAsciiKey()
+{
+    for (int i=0;i<SDLK_LAST;i++)
+    {
+        if (keys[i])
+        {
+            keys[i] = false;
+            return (char)i;
+        }
+    }
+    return 0;
+}
+
 bool Input::keyEvent(bool reset) //did a key event happen just now
 {
     bool ret=keyevent;
