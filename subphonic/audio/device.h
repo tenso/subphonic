@@ -1,8 +1,6 @@
 #ifndef SPL_DEVICE_H
 # define SPL_DEVICE_H
 
-# include <queue>
-# include <list>
 # include <SDL.h>
 
 namespace spl
@@ -37,71 +35,44 @@ namespace spl
 
 /*name missleading, not a queue element*/
 
+#define SOUND_MAX_DATA_LEN 8192
+#define SOUND_MAX_QUEUE_LEN 32
+
 class QElement
 {
   public:
     QElement()
     {
-        data=NULL;
         len=0;
         pos=0;
     }
    
-    Uint8* data;
+    Uint8 data[SOUND_MAX_DATA_LEN];
     int len;
     int pos;
 };
 
-
-class SoundDataQueue
+class SoundDataRing
 {
-  public:
-   
-    SoundDataQueue()
-    {
-        max=32;
-    }
-   
-    void setMax(unsigned int max);
-   
+public:
+    SoundDataRing();
     QElement& front();
-   
     void pop();
     void push(const Uint8* bytes, int len);
-   
     int size();
     void clear();
-   
-  private:
-    std::queue<QElement> data;
-    unsigned int max;
-};
 
-class SoundDataMix
-{
-  public:
-    SoundDataMix()
-    {
-        max=32;
-    }
-   
-    void setMax(unsigned int max);
-    void add(const Uint8* bytes, int len);
-   
-    int size();
-    void clear();
-   
-    std::list<QElement> data;
-   
-  private:
-    unsigned int max;
-   
+protected:
+    QElement data[SOUND_MAX_QUEUE_LEN];
+    int queueFront;
+    int back;
+    int queueSize;
 };
 
 struct SoundData
 {
-    SoundDataQueue queue;
-    SoundDataMix   mix;
+    SoundDataRing queue;
+    SoundDataRing mix;
 };
 
 //WANRING: do not call SDL_LockAudio()
@@ -157,8 +128,7 @@ class SDLAudioDev /*: public AudioDev*/
 //callback for SDL
 void fill_audio(void *udata, Uint8 *stream, int len); //shares SDLAudioDev::data
 
-void mixQueue(Uint8 *stream, int len, SoundDataQueue* data);
-void mixMix(Uint8 *stream, int len, SoundDataMix* data);
+void sdlMix(Uint8 *stream, int len, SoundDataRing* data, bool queueMode);
 
 typedef SDLAudioDev AudioDev;
 

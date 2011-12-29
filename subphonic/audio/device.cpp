@@ -133,7 +133,7 @@ int SDLAudioDev::inQueue()
 void SDLAudioDev::playMix(const char* data, int len)
 {
     SDL_LockAudio();
-    this->data.mix.add((const Uint8*)data,len);
+    this->data.mix.push((const Uint8*)data,len);
     SDL_UnlockAudio();
 }
 
@@ -163,20 +163,17 @@ void SDLAudioDev::clear()
 
 void fill_audio(void *udata, Uint8 *stream, int len)
 {
-    SoundDataQueue* qdata = &((SoundData*)udata)->queue;
-   
+    SoundDataRing* qdata = &((SoundData*)udata)->queue;
     if(qdata->size()>0)
-        mixQueue(stream, len, qdata);
+        sdlMix(stream, len, qdata, true);
    
-    SoundDataMix* mdata = &((SoundData*)udata)->mix;
-   
+    SoundDataRing* mdata = &((SoundData*)udata)->mix;
     if(mdata->size()>0)
-        mixMix(stream, len, mdata);
-   
+        sdlMix(stream, len, mdata, false);
 }
 
 
-void mixQueue(Uint8 *stream, int len, SoundDataQueue* data)
+void sdlMix(Uint8 *stream, int len, SoundDataRing* data, bool queueMode)
 {
     int mixed=0;
     while(len>0 && data->size()>0)
@@ -188,184 +185,84 @@ void mixQueue(Uint8 *stream, int len, SoundDataQueue* data)
         //mix all that is possible from front then continue into next
         if( len > elm_left)
         {
-	     
-            SDL_MixAudio(stream+mixed,
-            &elm.data[elm.pos], 
-            elm_left, 
-            SDL_MIX_MAXVOLUME);
+            SDL_MixAudio(stream+mixed, &elm.data[elm.pos], elm_left, SDL_MIX_MAXVOLUME);
 	     
             //done with this one
-            data->pop(); //alsa deletes data
+            data->pop(); 
 	     
             //take rest from next element
             len-=elm_left;
-            mixed+=elm_left;
+            if (queueMode)mixed+=elm_left;
         }
         //take everything from this element
         else 
         {
-            SDL_MixAudio(stream+mixed,
-            &elm.data[elm.pos],
-            len, 
-            SDL_MIX_MAXVOLUME);
-	     
+            SDL_MixAudio(stream+mixed, &elm.data[elm.pos], len, SDL_MIX_MAXVOLUME);
             elm.pos+=len;
-	     
             len-=elm_left;
-            //mixed+=elm_left;
         }
     }
 }
 
 
-void mixMix(Uint8 *stream, int len, SoundDataMix* data)
+/***************/
+/*SoundDataRing*/
+/***************/
+
+SoundDataRing::SoundDataRing()
 {
-    list<QElement>::iterator it;
-   
-    for(it=data->data.begin();it!=data->data.end();)
+    clear();
+}
+
+QElement& SoundDataRing::front()
+{
+    if (size() == 0)
     {
-        QElement& elm = *it;
-	
-        int elm_left=elm.len-elm.pos;
-	
-        //mix all that is left
-        if( len > elm_left)
-        {
-	     
-            SDL_MixAudio(stream,
-            &elm.data[elm.pos], 
-            elm_left, 
-            SDL_MIX_MAXVOLUME);
-	     
-            //done with this one
-            delete elm.data;
-            it = data->data.erase(it);
-        }
-        //take everything possible
-        else 
-        {
-            SDL_MixAudio(stream,
-            &elm.data[elm.pos],
-            len, 
-            SDL_MIX_MAXVOLUME);
-	     
-            elm.pos+=len;
-	     
-            it++;
-        }
+        D_ERROR("ERROR: no elements!");
     }
+    
+    return data[back];
 }
 
-
-
-
-/****************/
-/*SoundDataQueue*/
-/****************/
-
-void SoundDataQueue::setMax(unsigned int max)
+void SoundDataRing::pop()
 {
-    this->max=max;
+    if(size() == 0)
+    {
+        D_ERROR("queue empty");
+        return;
+    }
+    back++;
+    back %= SOUND_MAX_QUEUE_LEN;
+    queueSize--;
 }
 
-QElement& SoundDataQueue::front()
+void SoundDataRing::push(const Uint8* bytes, int len)
 {
-    return data.front();
-}
-
-void SoundDataQueue::pop()
-{
-    QElement q =data.front();
-    //DONT DO THIS:
-    delete q.data;
-   
-    data.pop();
-}
-
-
-void SoundDataQueue::push(const Uint8* bytes, int len)
-{
-    if(data.size()>=max)
+    if(size() >= SOUND_MAX_QUEUE_LEN)
     {
         D_ERROR("queue full, new element dropped");
         return;
     }
-   
-    QElement elm;
-   
-    //DONT DO THIS: instead have heap and just assign.
-    elm.data=new Uint8[len];
-    memcpy(elm.data, bytes, len);
-   
-    elm.len=len;
-    elm.pos=0;
-   
-    data.push(elm);
+       
+    memcpy(data[queueFront].data, bytes, len);
+    data[queueFront].len = len;
+    data[queueFront].pos = 0;
+
+    queueFront++;
+    queueSize++;
+    queueFront %= SOUND_MAX_QUEUE_LEN;
 }
 
-int SoundDataQueue::size()
+int SoundDataRing::size()
 {
-    return data.size();
+    return queueSize;
 }
 
-void SoundDataQueue::clear()
+void SoundDataRing::clear()
 {
-    while(data.size()>0)
-    {
-        QElement& q =data.front();
-        delete q.data;
-	
-        data.pop();
-	
-    }
-   
-   
-}
-
-
-/**************/
-/*SoundDataMix*/
-/**************/
-
-void SoundDataMix::setMax(unsigned int max)
-{
-    this->max=max;
-}
-
-void SoundDataMix::add(const Uint8* bytes, int len)
-{
-    if(data.size()>=max)
-    {
-        D_ERROR("mix full, new element dropped");
-        return;
-    }
-   
-    QElement elm;
-   
-    elm.data=new Uint8[len];
-    memcpy(elm.data, bytes, len);
-   
-    elm.len=len;
-    elm.pos=0;
-   
-    data.push_back(elm);
-}
-
-int SoundDataMix::size()
-{
-    return data.size();
-}
-
-void SoundDataMix::clear()
-{
-    while(data.size()>0)
-    {
-        QElement& q = data.front();
-        delete q.data;
-	
-        data.pop_front();
-	
-    }
+    queueFront = 0;
+    back = 0;
+    queueSize = 0;
 }
 
 }//end of namespace spl

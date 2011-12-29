@@ -41,7 +41,7 @@ static const int INITIAL_FPS=30;
 uint num_threads=2; //cant change after init
 const uint max_threads=9;
 int screen_w=1280;
-int screen_h=720;
+int screen_h=1024;
 bool useGl = false;
 bool useFullscreen = false;
 
