@@ -476,7 +476,6 @@ void MasterResourses::handleInput()
                 //con->show("want workspace:" + toStr(i));
                 change_master=true;
                 next_master_th=i;
-                in.keySet(SDLK_LALT, true);
             }
         }
     }
