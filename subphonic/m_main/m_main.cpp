@@ -110,6 +110,8 @@ Main::Main(int x, int y, Screen* s, BitmapFont* font, Console* con)
     lmouse_y=0;
    
     last_menu_add=G_NONE;
+
+    setPrefix("./");
 }
 
 
@@ -640,12 +642,11 @@ string Main::getLastLoad() const
 void Main::setPrefix(const string& s)
 {
     prefix=s;
-   
-    if(prefix.at(prefix.length()-1) != '/')
+    if (prefix.length() == 0)prefix = "/";
+    else if(prefix.at(prefix.length()-1) != '/')
     {
         prefix = prefix + "/";
     }
-   
     filemenu->setDir(prefix);
 }
 

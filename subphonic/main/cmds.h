@@ -791,7 +791,7 @@ void reset(void* arg)
 {
     //must save some runtime data before rest
     string pfix = cmd_caller_th->maincomp->getPrefix();
-   
+
     delete cmd_caller_th->maincomp;
    
     cmd_caller_th->maincomp = new Main(0,0, master_res.screen,  fnt["std"]/*master_res.f*/,master_res.con);
