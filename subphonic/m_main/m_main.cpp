@@ -1924,48 +1924,17 @@ C_FileDir::C_FileDir(Main* src)
 
 void C_FileDir::action(Component* c /*=NULL*/)
 {
-    //const ProgramState& progstate = ProgramState::instance();
-   
-    //ActionDir is absolute dir to module path:
-    //extra prefix needs to be a part of the module name: saved for later use: so that extra path is saved in name
-    //remove base_prefix:
-    /*string extra = getActionDir();
-      if(extra.size()!=0 && *(extra.end()) != '/')extra += "/";
-   
-      string fname = extra+getActionName();*/
-   
-   
-    /*FIXMEFIXMEFIXME*/
-    /*copypaste from cmd.h! NOT GOOD*/
-   
-   
-   
-    //only loads in module path
-    /*
-      src->con->show("load: %s",fname.c_str());
-   
-      m_err err = src->loadProgram(fname, progstate.getForceLoad());
-      if(err!=OK)
-      {
-      if(err==FILE_NOTFOUND_ERR)src->con->show("no such file:%s",fname.c_str()); 
-      if(err==COMP_FAIL_ERR)src->con->show("comp(s) load fail");
-      if(err==FILE_CORRUPT_ERR)src->con->show("file corrupt: %s",fname.c_str());;
-      if(err==CON_FAIL_ERR)src->con->show("(E) line src->connection(s) failed");
-      if(err==FILE_IO_ERR)src->con->show("(E) file io error");
-      if(err==ERROR)src->con->show("(W) something wrong happened");
-      ERROR("load error");
-      }
-   
-      src->setLastLoad(getActionName());*/
-    //cout << "load:" << getActionName() << endl;
-   
-    //get "extra" prefix i.e part 
+    //get "extra" prefix i.e remove maincomp->getPrefix()
     string extra = getActionDir().substr(src->getPrefix().length());
     if(extra.size()!=0 && *(extra.end()-1) != '/')extra += "/";
    
     string s = getActionName();
     s = s.substr(0, s.find_last_of("."));
     src->pushCmd("load " + extra+s);
+
+    /*cout << "prefix: " << src->getPrefix() << endl;
+    cout << "extra: " << extra << endl;
+    cout << "file: " << s << endl;*/
 }
 
 

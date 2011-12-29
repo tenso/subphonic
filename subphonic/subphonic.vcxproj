@@ -339,6 +339,10 @@
     <ClInclude Include="util\types.h" />
     <ClInclude Include="util\util.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="data\autoexec.cfg" />
+    <None Include="data\config.cfg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
