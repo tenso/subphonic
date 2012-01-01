@@ -48,7 +48,7 @@ GSlew::GSlew(BitmapFont* f, GroundMixer& g) : SoundComp(g)
    
     rt_knob = new KnobSlider(pix["knob16x16"]);
     rt_knob->setMouseMoveAction(new C_UPDATE(this));
-    rt_knob->setContinous(0, KNOB_MAX, KNOB_MAX/KNOB_NREVS);
+    rt_knob->setContinous(0, KNOB_MAX, KNOB_MAX/(float)KNOB_NREVS);
     rt_knob->setTurnSpeed(KNOB_TURN_FAST);
     rt_knob->setValue(0.1); 
     add(rt_knob,xoff+4,yoff+12);
@@ -70,7 +70,7 @@ GSlew::GSlew(BitmapFont* f, GroundMixer& g) : SoundComp(g)
    
     ft_knob = new KnobSlider(pix["knob16x16"]);
     ft_knob->setMouseMoveAction(new C_UPDATE(this));
-    ft_knob->setContinous(0, KNOB_MAX, KNOB_MAX/KNOB_NREVS);
+    ft_knob->setContinous(0, KNOB_MAX, KNOB_MAX/(float)KNOB_NREVS);
     ft_knob->setTurnSpeed(KNOB_TURN_FAST);
     ft_knob->setValue(0.1); 
     add(ft_knob, xoff+4, yoff+12);

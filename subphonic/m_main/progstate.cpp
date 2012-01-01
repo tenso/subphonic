@@ -415,7 +415,6 @@ bool ProgramState::appendToDump(const Sample* s)
     dumpoff+=rest;
     dumplen-=rest;
     if(dumplen<0)DERROR("underun");
-   
 
     return true;
 }

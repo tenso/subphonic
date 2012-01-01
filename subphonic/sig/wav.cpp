@@ -52,7 +52,7 @@ Wav::err Wav::make(char* data, int nbytes, int freq, int channels, int format)
     //copy data
     bytes = new char[nbytes];
     memcpy(bytes, data, nbytes);
-   
+    
     isok=true;
     return OK;
 }
@@ -77,7 +77,7 @@ Wav::err Wav::save(const string& filename, bool force)
 	
     }
    
-    ofstream out(filename.c_str());
+    ofstream out(filename.c_str(), ios::out | ios::binary);
     if(!out)
     {
         DERROR("could not create");
@@ -182,9 +182,7 @@ Wav::err Wav::load(const string& filename)
         ERROR("not 'data' head, corrupt read follows");
     }
    
-   
     bytes = new char[head.nbytes];
-   
     in.read(bytes,head.nbytes);
    
     if(!in.good())
@@ -195,9 +193,7 @@ Wav::err Wav::load(const string& filename)
         return FILE_IO_ERR;
     }
    
-   
     in.close();
-   
     isok=true;
    
     return OK;

@@ -51,7 +51,7 @@ GEnv::GEnv(BitmapFont* f, GroundMixer& g) : SoundComp(g)
    
     per_knob = new KnobSlider(pix["knob16x16"]);
     per_knob->setMouseMoveAction(new C_UP_PER(this));
-    per_knob->setContinous(0,1.0,1.0/KNOB_NREVS);
+    per_knob->setContinous(0,1.0,1.0/(float)KNOB_NREVS);
     per_knob->setTurnSpeed(KNOB_TURN_FAST);
     per_knob->setValue(0.1);
     per_v->setValue(per_knob->getValue());
